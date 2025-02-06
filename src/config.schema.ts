@@ -6,3 +6,5 @@ export const configSchema = z.object({
   }),
   BASE_URL_API: z.string(),
 });
+
+export type Config = z.infer<typeof configSchema>;
