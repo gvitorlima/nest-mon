@@ -1,13 +1,13 @@
 import { Inject, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { configSchema } from './config.schema';
+import { configSchema, Config } from './config.schema';
 import { ErrorHelper } from './common/helpers/responses/error.helper';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      validate: (config) => {
+      validate: (config): Config => {
         const parsed = configSchema.safeParse(config);
 
         if (!parsed.success) {
